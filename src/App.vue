@@ -68,7 +68,6 @@ export default {
         .then(response => {
           return response.data;
         });
-      console.log(this.elements);
     }
   },
 
