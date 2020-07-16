@@ -35,7 +35,7 @@
             <li v-for="spec of specialities" class="specialisation">{{spec}}</li>
           </ul>
           <a href="#" class="cta" @click="readMore">
-            <span>{{isExpand ? 'Read More' : 'Show Less'}}</span>
+            <span>{{!isExpand ? 'Read More' : 'Show Less'}}</span>
           </a>
         </div>
       </div>
