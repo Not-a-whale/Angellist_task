@@ -89,14 +89,23 @@
     @media screen and (max-width: 1080px) {
       min-width: 30%;
       max-width: 90%;
-      height: 40rem;
       transform: translateY(8rem);
+      height: 50rem;
     }
+
+    @media screen and (max-width: 768px) {
+      height: 40rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      height: 25rem;
+    }
+
     img {
       width: 100%;
       height: 100%;
       -o-object-fit: cover;
-      object-fit: cover;
+      object-fit: fill;
       display: block;
       border-radius: 0.8rem;
     }
