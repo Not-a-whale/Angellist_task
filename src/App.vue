@@ -64,7 +64,7 @@ export default {
   methods: {
     async getData() {
       this.elements = await axios
-        .get("http://localhost:8080/front-end_data.json")
+        .get("https://api.npoint.io/4f78b0828a0732cef497")
         .then(response => {
           return response.data;
         });

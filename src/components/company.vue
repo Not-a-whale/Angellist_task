@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <div class="company__img">
+    <div class="company__img" v->
       <a :href="website">
         <img :src="screenShot" alt="company Screenshot" />
       </a>
@@ -302,7 +302,6 @@
 <script>
 export default {
   data() {
-    console.log(this.specialities);
     return {
       errorLoading: false,
       alt: "",
