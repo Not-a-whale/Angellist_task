@@ -29,13 +29,20 @@
         <img :src="!errorLoading ? logo : alt" @error="imageLoadError" />
         <div class="company__description--text">
           <h3>{{title}}</h3>
-          <p>{{isExpand ? Long_description : Short_description}}</p>
+          <transition name="fade" mode="out-in">
+            <p v-if="isExpand" key="long">{{Long_description}}</p>
+            <p v-else key="short">{{Short_description}}</p>
+          </transition>
           <h4 v-if="isExpand">Areas of interest</h4>
-          <ul class="specialisations" v-if="isExpand">
-            <li v-for="spec of specialities" class="specialisation">{{spec}}</li>
-          </ul>
-          <a href="#" class="cta" @click="readMore">
-            <span>{{!isExpand ? 'Read More' : 'Show Less'}}</span>
+          <transition name="fadeOne">
+            <ul class="specialisations" v-if="isExpand">
+              <li v-for="spec of specialities" class="specialisation">{{spec}}</li>
+            </ul>
+          </transition>
+          <a class="cta" @click="readMore">
+            <transition name="fade">
+              <span>{{!isExpand ? 'Read More' : 'Show Less'}}</span>
+            </transition>
           </a>
         </div>
       </div>
@@ -48,6 +55,26 @@
   </div>
 </template>
 <style lang="scss" scoped>
+.fadeOne-enter-active,
+.fadeOne-leave-active {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.fadeOne-enter,
+.fadeOne-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .company {
   width: 100%;
   max-width: 100rem;
@@ -271,10 +298,12 @@
         box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
         margin-top: 2rem;
         z-index: 1;
+        cursor: pointer;
 
         span {
           position: relative;
           z-index: 11111;
+          cursor: pointer;
         }
 
         &::after {
